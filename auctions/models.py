@@ -8,7 +8,7 @@ class User(AbstractUser):
 
 class Listing(models.Model):
     title = models.CharField(max_length=120)
-    starting_bid = models.DecimalField(max_digits=4, decimal_places=2)
+    starting_bid = models.DecimalField(max_digits=8, decimal_places=2)
     description = models.CharField(max_length=360)
     # default=4 sets default to 'Uncategorized'
     category = models.ForeignKey('Category', on_delete=models.CASCADE, default=4, blank=True)
@@ -26,7 +26,7 @@ class Listing(models.Model):
 
 class Bid(models.Model):
     listing = models.ForeignKey(Listing, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=4, decimal_places=2)
+    amount = models.DecimalField(max_digits=8, decimal_places=2)
     bid_time = models.DateTimeField(auto_now_add=True)
     bidder = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
     

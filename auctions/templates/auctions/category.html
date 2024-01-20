@@ -9,6 +9,15 @@
         {% for listing in listings %}
             <li>
                 <a href="{% url 'listing' listing.id %}">{{ listing.title }}</a>
+                <p><b>Price: </b>${{ listing.starting_bid }}</p>
+                <p>{{ listing.description }}</p>
+                {% if listing.image %}
+                    <img src="{{ listing.image.url }}">
+                {% else %}
+                    {% if listing.image_url %}
+                        <img src="{{ listing.image_url }}">
+                    {% endif %}
+                {% endif %}
             </li>
         {% endfor %}
     </ul>

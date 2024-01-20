@@ -10,6 +10,15 @@
         {% for item in watchlist %}
             <li>
                 <a href="{% url 'listing' item.id %}">{{ item.title }}</a>
+                Price: ${{ item.starting_bid }}
+                <br>
+                {% if item.image %}
+                    <img src="{{ item.image.url }}">
+                {% else %}
+                    {% if item.image_url %}
+                        <img src="{{ item.image_url }}">
+                    {% endif %}
+                {% endif %}
             </li>
         {% endfor %}
     </ul>

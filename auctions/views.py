@@ -16,6 +16,11 @@ def index(request):
         "listings": Listing.objects.all()
     })
 
+def inactive(request):
+    return render(request, "auctions/inactive.html", {
+        "listings": Listing.objects.filter(is_active=False)
+    })
+
 
 def login_view(request):
     if request.method == "POST":

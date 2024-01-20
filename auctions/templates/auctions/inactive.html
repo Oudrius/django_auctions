@@ -1,10 +1,10 @@
-{% extends "auctions/layout.html" %}
+{% extends 'auctions/layout.html' %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+    <h2>Previous Listings</h2>
     <ul>
         {% for listing in listings %}
-            {% if listing.is_active == True %}
+            {% if listing.is_active == False %}
                 <li>
                     <h1><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></h1>
                     <p><b>Price: </b>${{ listing.starting_bid }}</p>
